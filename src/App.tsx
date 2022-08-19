@@ -1,32 +1,27 @@
 import React from 'react';
 import './App.css';
+import {Button} from "./site/Button";
 
 
 function App() {
-    // const myFirstSubscriber = () => {
-    //     console.log('Hello, I\'m Vasya')
-    // };
-    // const mySecondSubscriber = () => {
-    //     console.log('Hello, I\'m Ivan')
-    // };
-    // const onClickHandler=(name:string) => {
-    //     console.log(name)
-    // }
-    const foo1 = () => {
-        console.log('100200')
-// ничего не передавать, но в консоли должно показаться 100200
-    };
-    const foo2 = (num:number) => {
-        console.log(num)
-    };
+    const Button1Foo = (subscriber: string, age: number, address: string) => {
+        console.log(subscriber, age, address)
+    }
+    const Button2Foo = (subscriber: string, age: number) => {
+        console.log(subscriber, age)
+    }
+    const Button3Foo = () => {
+        console.log('Im stupid button')
+    }
+
     return (
         <div className="App">
-            {/*<button onClick={(event: React.MouseEvent<HTMLButtonElement>)=>{console.log('Hello!')}}> My Youtube Chanel - 1 </button>*/}
-            {/*<button onClick={(event) => onClickHandler('Vasya')}> My Youtube Chanel - 1</button>*/}
-            {/*<button onClick={(event) => onClickHandler('Ivan')}> My Youtube Chanel - 2</button>*/}
-            {/*<button onClick={() => onClickHandler('some info')}> My Youtube Chanel - 3</button>*/}
-            <button onClick={foo1}>1</button>
-            <button onClick={() => foo2(100200)}>2</button>
+            {/*<button>MyYoutubeChannel-1</button>*/}
+            {/*<button>MyYoutubeChannel-2</button>*/}
+            <Button name={'MyYoutubeChannel-1'} callBack={() => Button1Foo('Im Vasya', 21, 'Minsk')}/>
+            <Button name={'MyYoutubeChannel-2'} callBack={() => Button2Foo('Im Ivan', 22)}/>
+            <Button name={'Stupid Button'} callBack={Button3Foo}/>
+
         </div>
     );
 }
