@@ -1,19 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {NewComponent} from "./NewComponent";
 
-const topCars = [
-    {manufacturer: 'BMW', model: 'm5cs'},
-    {manufacturer: 'Mercedes', model: 'e63s'},
-    {manufacturer: 'Audi', model: 'rs6'}
-];
 
 function App() {
+    // const myFirstSubscriber = () => {
+    //     console.log('Hello, I\'m Vasya')
+    // };
+    // const mySecondSubscriber = () => {
+    //     console.log('Hello, I\'m Ivan')
+    // };
+    // const onClickHandler=(name:string) => {
+    //     console.log(name)
+    // }
+    const foo1 = () => {
+        console.log('100200')
+// ничего не передавать, но в консоли должно показаться 100200
+    };
+    const foo2 = (num:number) => {
+        console.log(num)
+    };
     return (
-        <>
-            <NewComponent topCars={topCars}/>
-        </>
+        <div className="App">
+            {/*<button onClick={(event: React.MouseEvent<HTMLButtonElement>)=>{console.log('Hello!')}}> My Youtube Chanel - 1 </button>*/}
+            {/*<button onClick={(event) => onClickHandler('Vasya')}> My Youtube Chanel - 1</button>*/}
+            {/*<button onClick={(event) => onClickHandler('Ivan')}> My Youtube Chanel - 2</button>*/}
+            {/*<button onClick={() => onClickHandler('some info')}> My Youtube Chanel - 3</button>*/}
+            <button onClick={foo1}>1</button>
+            <button onClick={() => foo2(100200)}>2</button>
+        </div>
     );
 }
 
