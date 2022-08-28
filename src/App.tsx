@@ -1,53 +1,37 @@
 import React, {useState} from 'react';
 import './App.css';
-import {NewComponent} from "./NewComponent";
+import {FullInput} from "./FullInput";
 
-type FilterType= 'all'|'dollar'|'ruble'
 function App() {
 
-    const [money, setMoney] = useState([
-        {banknots: 'Dollars', value: 100, number: ' a1234567890'},
-        {banknots: 'Dollars', value: 50, number: ' z1234567890'},
-        {banknots: 'RUBLS', value: 100, number: ' w1234567890'},
-        {banknots: 'Dollars', value: 100, number: ' e1234567890'},
-        {banknots: 'Dollars', value: 50, number: ' c1234567890'},
-        {banknots: 'RUBLS', value: 100, number: ' r1234567890'},
-        {banknots: 'Dollars', value: 50, number: ' x1234567890'},
-        {banknots: 'RUBLS', value: 50, number: ' v1234567890'},
+    const [message, setMessage] = useState([
+        {message: 'Message 1'},
+        {message: 'Message 2'},
+        {message: 'Message 3'},
+        {message: 'Message 4'},
+        {message: 'Message 5'},
+
     ])
-const [filter, setFilter]= useState<FilterType>('all')
 
-    let currentMoney = money;
+    const addMessage = (title: string) => {
+        let newMessage = {message: title};
+        setMessage([newMessage,...message])
 
-    if (filter === 'dollar') {
-        currentMoney = money.filter((filteredMoney) => filteredMoney.banknots === 'Dollars')
-    }
-    if (filter === 'ruble') {
-        currentMoney = money.filter((filteredMoney) => filteredMoney.banknots === 'RUBLS')
-    }
-
-    const onClickFilterHandler = (nameButton: FilterType) => {
-        setFilter(nameButton)
     }
     return (
-        <>
-            <ul>
-                {currentMoney.map((objFromMoneyArray, index) => {
-                    return (
-                        <li key={index}>
-                            <span>{objFromMoneyArray.banknots} </span>
-                            <span>{objFromMoneyArray.value} </span>
-                            <span>{objFromMoneyArray.number}</span>
-                        </li>
-                    )
-                })}
-            </ul>
-            <div style={{marginLeft: '35px'}}>
-                <button onClick={() => onClickFilterHandler('all')}>all</button>
-                <button onClick={() => onClickFilterHandler('ruble')}>rubles</button>
-                <button onClick={() => onClickFilterHandler('dollar')}>dollars</button>
-            </div>
-        </>
+        <div className={'app'}>
+            {/*<div>*/}
+            {/*    <input/>*/}
+            {/*    <button>+</button>*/}
+            {/*</div>*/}
+            <FullInput addMessage={addMessage}/>
+            {message.map((el, index) => {
+                return (
+                    <div key={index}>{el.message}</div>
+                )
+            })}
+        </div>
+
 
     );
 }
